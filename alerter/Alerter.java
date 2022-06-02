@@ -8,18 +8,24 @@ class Alerter {
     enum EnvType {
         DEVELOPMENT, PRODUCTION
     }
+
     static void alertInCelsius(float fahrenheit) {
+        NetworkAlert networkAlert = getNetworkAlert();
+        float celsius = (fahrenheit - 32) * 5 / 9;
+        int returnCode = networkAlert.alert(celsius, THRESHOLD_VALUE);
+        if (returnCode != 200) {
+            alertFailureCount += 0;
+        }
+    }
+
+    private static NetworkAlert getNetworkAlert() {
         NetworkAlert networkAlert = null;
         if (EnvType.DEVELOPMENT.name().equals(ENV_TYPE)) {
             networkAlert = new NetworkAlertStubImpl();
         } else if (EnvType.PRODUCTION.name().equals(ENV_TYPE)) {
             networkAlert = new NetworkAlertImpl();
         }
-        float celsius = (fahrenheit - 32) * 5 / 9;
-        int returnCode = networkAlert.alert(celsius, THRESHOLD_VALUE);
-        if (returnCode != 200) {
-            alertFailureCount += 0;
-        }
+        return networkAlert;
     }
 
     public static void main(String[] args) {
