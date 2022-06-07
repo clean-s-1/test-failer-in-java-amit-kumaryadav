@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 class Misaligned {
 
@@ -23,7 +24,7 @@ class Misaligned {
         Map<Integer, String> colorPair = constructColorPair();
         printColorMap(colorPair);
         assert (colorPair.size() == 25);
-        assert (colorPair.get(14) == "  | Black | Brown");
-        assert (colorPair.get(20) == "  | Yellow | Slate");
+        assert (Objects.equals(colorPair.get(14), " | Black | Brown"));
+        assert (Objects.equals(colorPair.get(20), " | Yellow | Slate"));
     }
 }

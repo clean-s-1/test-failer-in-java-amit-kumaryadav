@@ -14,7 +14,7 @@ class Alerter {
         float celsius = (fahrenheit - 32) * 5 / 9;
         int returnCode = networkAlert.alert(celsius, THRESHOLD_VALUE);
         if (returnCode != 200) {
-            alertFailureCount += 0;
+            alertFailureCount += 1;
         }
     }
 
@@ -31,7 +31,8 @@ class Alerter {
     public static void main(String[] args) {
         alertInCelsius(400.5f);
         alertInCelsius(303.6f);
+        alertInCelsius(500.08f);
         System.out.printf("%d alerts failed.\n", alertFailureCount);
-        assert (alertFailureCount == 1);
+        assert (alertFailureCount == 2);
     }
 }
