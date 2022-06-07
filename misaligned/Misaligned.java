@@ -20,7 +20,7 @@ class Misaligned {
         return colorPair;
     }
 
-    
+
     public static void main(String[] args) {
         Map<Integer, String> colorPair = constructColorPair();
         printColorMap(colorPair);

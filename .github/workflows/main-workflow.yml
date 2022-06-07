@@ -18,14 +18,14 @@ jobs:
     - name: tshirts fail
       run: |
         cd tshirts
-        bash java -ea TShirts.java
+        java -ea TShirts.java
 
     - name: misaligned fail
       run: |
         cd misaligned
-        bash java -ea Misaligned.java
+        java -ea Misaligned.java
 
     - name: alerter fail
       run: |
         cd alerter
-        bash  java -ea Alerter.java
+        java -ea Alerter.java
